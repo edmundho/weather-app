@@ -5,7 +5,9 @@ Clone the repo:
 ```bash
 git clone git@github.com:edmundho/weather-app.git
 ```
+
 or
+
 ```bash
 git clone https://github.com/edmundho/weather-app.git
 ```
@@ -34,3 +36,12 @@ See your forecast (data not cached).
 
 Click back, and submit again with the same address and see cached data.
 ![](public/screenshots/forecast-cached.png)
+
+### Notes
+
+The app uses two external APIs:
+
+- The `us-zip-code-latitude-and-longitude` dataset via the public Open Data Soft API takes in a US zip code and returns its corresponding latitude & longitude.
+- The lat/lon are then passed to the OpenWeatherMap "One Call API" which returns current weather and 7 day forecast.
+- Only the OpenWeatherMap API requires an API key.
+- Caching is done with the out-of-the-box Rails memory store (`ActiveSupport::Cache::MemoryStore`)
