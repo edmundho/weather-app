@@ -18,7 +18,5 @@ class WeatherController < ApplicationController
       })
       Rails.cache.write(zip_code, @weather_info, expires_in: 30.minutes)
     end
-
-    p @weather_info
   end
 end
