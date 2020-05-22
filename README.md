@@ -1,24 +1,36 @@
-# README
+# Weather App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone the repo:
 
-Things you may want to cover:
+```bash
+git clone git@github.com:edmundho/weather-app.git
+```
+or
+```bash
+git clone https://github.com/edmundho/weather-app.git
+```
 
-* Ruby version
+Install gems:
 
-* System dependencies
+```bash
+bundle
+```
 
-* Configuration
+Launch the server:
 
-* Database creation
+```bash
+rails s
+```
 
-* Database initialization
+Open <http://localhost:3000> in a browser.
 
-* How to run the test suite
+## Using the app
 
-* Services (job queues, cache servers, search engines, etc.)
+Type in an address (zip code required) on the home page and click submit.
+![](public/screenshots/home-page.png)
 
-* Deployment instructions
+See your forecast (data not cached).
+![](public/screenshots/forecast-no-cache.png)
 
-* ...
+Click back, and submit again with the same address and see cached data.
+![](public/screenshots/forecast-cached.png)
