@@ -1,0 +1,43 @@
+<div><%= link_to 'Back', url_for(:back) %></div>
+
+<div class='current'>
+  <div class='title'>
+    <% location = @weather_info[:location] %>
+    <div>Currently in</div>
+    <div><%= "#{location[:city]}, #{location[:state]}" %></div>
+    <div><%= "(#{location[:zip]})" %></div>
+  </div>
+
+  <div class='main'>
+    <% current = @weather_info[:current_weather] %>
+    <div class='weather'>
+      <div class='temp'>
+        <%= "#{current[:current_temp]}" %>&deg;F
+      </div>
+      <div>& <%= current[:condition] %></div>
+    </div>
+    <div class='feels-like'><%= "Feels like #{current[:feels_like]}" %>&deg;F</div>
+  </div>
+</div>
+
+<div class='forecast'>
+  <ul>
+    <% @weather_info[:forecast].each do |day| %>
+      <% date = day[:date] %>
+      <% high = day[:high] %>
+      <% low = day[:low] %>
+      <% condition = day[:condition] %>
+      <li class='forecast-card'>
+        <div class='date'><%= date %></div>
+        <div>
+          <div class='temp'><%= high %>&deg;F/<%= low %>&deg;F</div>
+          <div class='condition'>& <%= condition %></div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% if @weather_info[:cached] %>
+  <div class='cached-message'>(showing cached data)</div>
+<% end %>
