@@ -27,8 +27,8 @@ module ApiUtils
 
   def extract_current_weather(data)
     {
-      current_temp: data['temp'],
-      feels_like: data['feels_like'],
+      current_temp: convert_to_degf(data['temp']),
+      feels_like: convert_to_degf(data['feels_like']),
       condition: data['weather'][0]['main'],
       date: Time.at(data['dt']).to_date
     }
@@ -40,11 +40,15 @@ module ApiUtils
       date = Time.at(day['dt']).to_date
       forecast << {
         date: date,
-        high: day['temp']['max'],
-        low: day['temp']['min'],
+        high: convert_to_degf(day['temp']['max']),
+        low: convert_to_degf(day['temp']['min']),
         condition: day['weather'][0]['main']
       }
     end
     forecast
+  end
+
+  def convert_to_degf(float)
+    ((float - 273.15) * Rational(9, 5) + 32).round
   end
 end
